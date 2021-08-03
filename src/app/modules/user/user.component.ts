@@ -29,12 +29,8 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.listUsers();
-  }
-
-  public listUsers(): void {
     this.userService.list()
-      .pipe(takeUntil(this.destroy$),)
+      .pipe(takeUntil(this.destroy$))
       .subscribe((response) => {
         this.users = response;
       }, (error) => {

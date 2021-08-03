@@ -1,24 +1,22 @@
 <h1 mat-dialog-title>Pagamento para <strong>{{user.name}}</strong></h1>
-<div mat-dialog-content>
-  <form [formGroup]="userForm">
-    <mat-form-field>
-      <mat-label>Valor à pagar</mat-label>
-      <input matInput currencyMask formControlName="value">
-      <mat-error *ngIf="userForm.get('value').invalid">Este campo é obrigatório</mat-error>
-    </mat-form-field>
+<form [formGroup]="userForm">
+  <mat-form-field>
+    <mat-label>Valor à pagar</mat-label>
+    <input matInput currencyMask formControlName="value">
+    <mat-error *ngIf="userForm.get('value').invalid">Este campo é obrigatório</mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Selecione um Cartão</mat-label>
-      <mat-select placeholder="Selecione um cartão" formControlName="card">
-        <mat-option *ngFor="let card of cards" [value]="card">
-          Cartão com final {{card.card_number.slice(-4)}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="userForm.get('card').invalid">Favor selecionar um cartão</mat-error>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Selecione um Cartão</mat-label>
+    <mat-select placeholder="Selecione um cartão" formControlName="card">
+      <mat-option *ngFor="let card of cards" [value]="card">
+        Cartão com final {{card.card_number.slice(-4)}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="userForm.get('card').invalid">Favor selecionar um cartão</mat-error>
+  </mat-form-field>
 
-    <div mat-dialog-actions>
-      <button mat-flat-button [disabled]="userForm.invalid" (click)="payment()">Pagar</button>
-    </div>
-  </form>
-</div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="primary" [disabled]="userForm.invalid" (click)="payment()">Pagar</button>
+  </div>
+</form>

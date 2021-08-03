@@ -1,8 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { User } from '../../shared/models/user.model';
 
@@ -14,7 +14,9 @@ export class UserService {
   ) { }
 
   public list(): Observable<User> {
-    return this.httpClient.get<User>('https://www.mocky.io/v2/5d531c4f2e0000620081ddce', { observe: 'response' })
-      .pipe(map((response: HttpResponse<User>) => response.body));
+    return this.httpClient.get<User>('https://www.mocky.io/v2/5d531c4f2e0000620081ddce')
+      .pipe(
+        catchError((response: HttpErrorResponse) => throwError(response.error)),
+      );
   }
 }
