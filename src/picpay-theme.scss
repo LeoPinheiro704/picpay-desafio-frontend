@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+$picpay-green: #11c76f;
+
+$primary: $picpay-green;
+
+$pp-green: (A100: $picpay-green,
+  A200: $picpay-green,
+  A400: $picpay-green,
+  A700: $picpay-green,
+  contrast: (200: white,
+    A400: white,
+    A700: white,
+  )
+);

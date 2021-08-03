@@ -1,6 +1,17 @@
-* {
-  box-sizing: border-box;
-}
+@import '~@angular/material/theming';
+@import "picpay-theme.scss";
+
+@include mat-core();
+
+$ui-primary: mat-palette($pp-green, A400);
+$ui-accent: mat-palette($pp-green, A100);
+$ui-warn: mat-palette($pp-green, A100);
+$ui-theme: mat-light-theme($ui-primary, $ui-accent, $ui-warn);
+
+@include angular-material-theme($ui-theme);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Montserrat, Arial, "Helvetica Neue", sans-serif;
+}
